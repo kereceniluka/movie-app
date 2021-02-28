@@ -5,7 +5,7 @@ import YouTube from 'react-youtube';
 // components
 import Banner from '../components/Banner';
 import Cta from '../components/Cta';
-import Row from '../components/Row';
+import PosterSection from '../components/PosterSection';
 import Modal from '../components/Modal';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
         width: '100%',
         height: '600px',
         playerVars: {
-            autoplay: 1,
+            autoplay: 0,
         },
     }
 
@@ -24,8 +24,8 @@ const Home = () => {
         <>
             <Banner />
             <Cta />
-            <Row title="Popular movies" type="movie" period="week" />
-            <Row title="Popular TV shows" type="tv" period="week" />
+            <PosterSection title="Popular movies" type="movie" period="week" />
+            <PosterSection title="Popular series" type="tv" period="week" bg="#f2f2f2" />
             <Modal title="Wonder Woman">
                {trailer && <YouTube videoId={trailer} opts={opts} />}
             </Modal>
