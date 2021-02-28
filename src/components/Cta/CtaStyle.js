@@ -2,9 +2,13 @@ import styled from 'styled-components/macro';
 import sizes from '../../utils/responsive';
 
 export const StyledCtaTitle = styled.h2 `
-    font-size: 1.8rem;
+    text-align: center;
+    color: #001217;
 
-    ${sizes.tablet} {
-        font-size: 2rem;
+    ${sizes.desktop} {
+        font-size: 41px;
+        line-height: 49px;
+        font-weight: bold;
+        letter-spacing: -0.6px;
     }
 `;
