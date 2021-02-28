@@ -1,10 +1,22 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
+// components
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+
+// pages
+import Home from './pages/Home';
 
 const App = () => {
   return (
-    <div>
-      <h1>Movie App | Track your favorite movies or TV shows.</h1>
-    </div>
+    <>
+      <Navigation />
+      <main>
+        <Route exact path="/" component={Home} />
+      </main>
+      <Footer />
+    </>
   );
 }
 
