@@ -5,11 +5,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // reducers
 import { trailerModalReducer } from './reducers/trailerModal';
 import { popularMovieDetailsReducer, popularTVsDetailsReducer } from './reducers/details';
+import { searchedMovieReducer, searchedTVShowReducer } from './reducers/search';
 
 const reducer = combineReducers({
     trailerModal: trailerModalReducer,
     trendingMovies: popularMovieDetailsReducer,
     trendingTVs: popularTVsDetailsReducer,
+    searchedMovies: searchedMovieReducer,
+    searchedTVShows: searchedTVShowReducer,
 });
 
 const initialState = {}
