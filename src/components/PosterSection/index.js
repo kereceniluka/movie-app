@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
-import { StyledSection, StyledOverlay } from './PosterSectionStyle';
-import { AddIcon } from '../../theme/StyledElements';
+import { StyledSection } from './PosterSectionStyle';
 import { useDispatch, useSelector } from 'react-redux';
-import { IconContext } from 'react-icons';
-import { FaStar, FaPlay } from 'react-icons/fa';
-import { FiPlus } from 'react-icons/fi'
 
 // bootstrap
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 // components
 import DetailCard from '../DetailCard';
@@ -31,7 +27,7 @@ const PosterSection = ({ title, type, period, bg }) => {
                 <Row lg={5} md={2} sm={1}>
                     {loading === false && (
                         data.results.filter((details, index) => index <= 4)
-                            .map(details => <DetailCard {...details} />)
+                            .map(details => <DetailCard type={type} {...details} />)
                     )}
                 </Row>
             </Container>

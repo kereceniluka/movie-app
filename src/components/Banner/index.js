@@ -10,7 +10,7 @@ import { Carousel, Container, Row, Col } from 'react-bootstrap';
 import Poster from '../Poster';
 
 // actions
-import { openModal, playTrailer } from '../../actions/trailerModal';
+import { playTrailer } from '../../actions/trailerModal';
 
 const Banner = () => {
 
@@ -18,7 +18,6 @@ const Banner = () => {
     const dispatch = useDispatch();
 
     const handleOpen = movie => {
-        dispatch(openModal());
         dispatch(playTrailer(movie));
     }
 

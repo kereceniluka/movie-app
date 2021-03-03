@@ -9,14 +9,13 @@ import { AddIcon } from '../../theme/StyledElements';
 import { Card } from 'react-bootstrap';
 
 // actions
-import { openModal, playTrailer } from '../../actions/trailerModal';
+import { playTrailer } from '../../actions/trailerModal';
 
-const Poster = ({ id, poster_path, title, name }) => {
+const Poster = ({ id, poster_path, title }) => {
 
     const dispatch = useDispatch();
 
     const handleOpen = (movie) => {
-        dispatch(openModal());
         dispatch(playTrailer(movie));
     }
 
