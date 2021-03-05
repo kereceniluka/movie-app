@@ -14,7 +14,7 @@ import { playTrailer } from '../../actions/trailerModal';
 
 const Banner = () => {
 
-    const { loading, data } = useSelector(state => state.trendingMovies);
+    const { loading, data: { results } } = useSelector(state => state.trendingMovies);
     const dispatch = useDispatch();
 
     const handleOpen = movie => {
@@ -22,14 +22,14 @@ const Banner = () => {
     }
 
     return (
-        <Carousel fluid style={{ height: '800px' }} controls={false}>
+        <Carousel className="d-none d-lg-block" style={{ height: '800px' }} controls={false} fluid="true">
             {loading === false && (
-                data.results.filter((movie, index) => index <= 4)
+                results.filter((movie, index) => index <= 4)
                     .map(({ id, poster_path, backdrop_path, title, overview, release_date, vote_average }) => (
-                        <Carousel.Item style={{ height: '800px' }}>
+                        <Carousel.Item key={id} style={{ height: '800px' }}>
                             <StyledOverlay />
                             <StyledImage src={`${process.env.REACT_APP_TMDB_IMAGES_URL}${backdrop_path}`} style={{ height: '800px' }} />
-                            <Carousel.Caption className="d-none d-lg-block">
+                            <Carousel.Caption>
                                 <Container>
                                     <Row style={{ height: '400px', marginBottom: '135px' }}>
                                         <Col className="d-flex flex-column align-items-center" lg={3}>

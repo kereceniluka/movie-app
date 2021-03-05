@@ -5,6 +5,11 @@ import { Row, Col } from 'react-bootstrap';
 export const StyledSection = styled.section `
     width: 100%;
     background: ${({ bg }) => bg ? bg : '#fff'};
+    padding: 15px 24px;
+    
+    ${sizes.desktop} {
+        padding: 100px 120px;
+    }
 `;
 
 export const StyledRow = styled(Row) `
@@ -20,10 +25,6 @@ export const StyledRow = styled(Row) `
     ${sizes.desktop} {
         overflow: hidden;
     }
-`;
-
-export const StyledCol = styled(Col) `
-    padding: .2rem;
 `;
 
 export const StyledTitle = styled.span `

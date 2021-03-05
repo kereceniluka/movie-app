@@ -16,7 +16,6 @@ export const StyledOverlay = styled.div `
 
 export const StyledImage = styled(Image) `
     width: 100%;
-    height: 100%;
     object-fit: cover;
     object-position: 50% 0;
 
