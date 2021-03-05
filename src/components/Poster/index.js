@@ -23,11 +23,11 @@ const Poster = ({ id, poster_path, title }) => {
         <StyledCard key={id} onClick={() => handleOpen({ id, title })}>
             <Card.Img src={`${process.env.REACT_APP_TMDB_IMAGES_URL}${poster_path}`} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
             <StyledImgOverlay className="d-flex flex-column align-items-center justify-content-end">
-                <IconContext.Provider value={{ color: '#fff', size: '22px' }}>
-                    <AddIcon>
+                <AddIcon poster>
+                    <IconContext.Provider value={{ color: '#fff', size: '22px' }}>
                         <FiPlus />
-                    </AddIcon>
-                </IconContext.Provider>
+                    </IconContext.Provider>
+                </AddIcon>
             </StyledImgOverlay>
         </StyledCard>
     );
