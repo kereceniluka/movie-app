@@ -25,9 +25,10 @@ export const StyledOverlay = styled.div `
 
 export const StyledImage = styled(Image) `
     width: 100%;
-    max-height: 300px;
+    height: 100%;
     border-radius: 8px;
     object-fit: cover;
+    object-position: center;
 `;
  
 export const StyledWatchTrailerBtn = styled.span `
