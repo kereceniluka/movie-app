@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledCtaTitle } from './CtaStyle';
+import { StyledContainer, StyledCtaTitle } from './CtaStyle';
 import { StyledCtaBtn } from '../../theme/StyledElements';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -8,7 +8,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const Cta = () => {
     return (
-        <Container className="text-center" fluid style={{ margin: '100px 0' }}>
+        <StyledContainer className="text-center" fluid="true">
             <Row>
                 <Col lg={12}>
                     <StyledCtaTitle>Let MovieApp be your guide</StyledCtaTitle>
@@ -23,7 +23,7 @@ const Cta = () => {
                     </LinkContainer>
                 </Col>
             </Row>
-        </Container>
+        </StyledContainer>
     );
 }
 

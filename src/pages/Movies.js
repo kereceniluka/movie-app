@@ -14,10 +14,10 @@ const Movies = () => {
 
     return (
         <Container style={{ padding: 0 }}>
-            <Row>
+            <Row style={{ margin: 0 }}>
                 <SearchInput placeholder="Search Movie" type="movie" />
             </Row>
-            <Row lg={5}>
+            <Row className="d-flex align-items-center justify-content-center" lg={5} style={{ margin: 0 }}>
                 {loading === false && (
                     results.length === 0 ? (        
                         <Alert className="m-auto" variant="danger">Sorry, but we can't find any Movie.</Alert>

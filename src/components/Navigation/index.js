@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledNavLink } from './NavigationStyle';
 import { LinkContainer } from 'react-router-bootstrap';
 import logo from '../../assets/images/logo.svg';
 import avatar from '../../assets/images/avatar.jpg';
@@ -19,39 +20,39 @@ const Navigation = () => {
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto" style={{ marginLeft: '70px' }}>
-                        <LinkContainer to="/movies" style={{ fontWeight: 700, color: '#14213D' }}>
+                    <Nav className="mr-auto d-sm-flex align-items-center">
+                        <StyledNavLink to="/movies">
                             <Nav.Link>Movies</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/tvshows" style={{ fontWeight: 700, color: '#14213D' }}>
+                        </StyledNavLink>
+                        <StyledNavLink to="/tvshows">
                             <Nav.Link>TV Shows</Nav.Link>
-                        </LinkContainer>
+                        </StyledNavLink>
                     </Nav>
-                    <Nav>
+                    <Nav className="d-sm-flex align-items-center">
                         {isLogged ? (
                             <>
                                 <Image src={avatar} roundedCircle style={{ width: '40px' }} />
                                 <NavDropdown title="Luka" id="basic-nav-dropdown" style={{ fontWeight: 700, color: '#14213D' }}>
-                                    <LinkContainer to="/watchlist" style={{ fontWeight: 700, color: '#14213D' }}>
+                                    <StyledNavLink to="/watchlist">
                                         <NavDropdown.Item>Watchlist</NavDropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/settings" style={{ fontWeight: 700, color: '#14213D' }}>
+                                    </StyledNavLink>
+                                    <StyledNavLink to="/settings">
                                         <NavDropdown.Item>Settings</NavDropdown.Item>
-                                    </LinkContainer>
+                                    </StyledNavLink>
                                     <NavDropdown.Divider />
-                                    <LinkContainer to="/logout" style={{ fontWeight: 700, color: '#14213D' }}>
+                                    <StyledNavLink to="/logout">
                                         <NavDropdown.Item>Logout</NavDropdown.Item>
-                                    </LinkContainer>
+                                    </StyledNavLink>
                                 </NavDropdown>
                             </>
                         ) : (
                             <>
-                                <LinkContainer to="/login" style={{ fontWeight: 700, color: '#14213D', marginRight: '38px' }}>
+                                <StyledNavLink to="/login" marginRight>
                                     <Nav.Link>Log In</Nav.Link>
-                                </LinkContainer>
-                                <LinkContainer to="/signup" style={{ backgroundColor: '#FCA311', borderColor: '#FCA311', color: '#14213D', fontWeight: 700 }}>
+                                </StyledNavLink>
+                                <StyledNavLink to="/signup" btn>
                                     <Button>Sign Up</Button>
-                                </LinkContainer>
+                                </StyledNavLink>
                             </> 
                         )}
                     </Nav>
