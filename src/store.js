@@ -6,19 +6,31 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { trailerModalReducer } from './reducers/trailerModal';
 import { popularMovieDetailsReducer, popularTVsDetailsReducer } from './reducers/details';
 import { searchedMovieReducer, searchedTVShowReducer } from './reducers/search';
+import { authReducer } from './reducers/auth';
+import { firebaseReducer, getFirebase } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore';
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
     trailerModal: trailerModalReducer,
     trendingMovies: popularMovieDetailsReducer,
     trendingTVs: popularTVsDetailsReducer,
     searchedMovies: searchedMovieReducer,
     searchedTVShows: searchedTVShowReducer,
+    auth: authReducer,
+    firebase: firebaseReducer,
+    firestore: firestoreReducer,
 });
 
 const initialState = {}
 
-const middleware = [thunk];
+const middlewares = [
+    thunk.withExtraArgument({ getFirebase }),
+];
 
-const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
+const store = createStore(
+    rootReducer, 
+    initialState,
+    composeWithDevTools(applyMiddleware(...middlewares))
+);
 
 export default store;
