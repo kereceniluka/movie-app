@@ -40,6 +40,11 @@ export const StyledSubmitBtn = styled(Button) `
     line-height: 28px;
     margin: 0 8px;
 
+    &:hover {
+        background-color: #fca311;
+        border-color: #fca311;
+    }
+
     ${sizes.desktop} {
         width: 150px;
     }
