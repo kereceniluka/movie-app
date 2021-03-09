@@ -8,12 +8,29 @@ import App from './App';
 // redux
 import store from './store';
 import { Provider } from 'react-redux';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
+
+// firebase
+import firebase from './firebase';
+
+const rrfProps = {
+  firebase,
+  config: {
+    userProfile: 'users',
+    useFirestoreForProfile: true,
+  },
+  dispatch: store.dispatch,
+  createFirestoreInstance,
+}
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <GlobalStyle />
-      <App />
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
     </Router>
   </Provider>,
   document.getElementById('root')
