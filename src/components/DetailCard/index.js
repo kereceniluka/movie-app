@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledCol, StyledImageWrapper, StyledOverlay, StyledImage, StyledWatchTrailerBtn, StyledWatchTrailerBtnLabel, StyledDescriptionWrapper, StyledVoteLabel, StyledDetailCardTitle } from './DetailCardStyle';
 import { AddIcon } from '../../theme/StyledElements';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { FaPlay, FaStar } from 'react-icons/fa';
 import { FiPlus } from 'react-icons/fi';
@@ -16,6 +16,8 @@ import { playTrailer } from '../../actions/trailerModal';
 const DetailCard = props => {
 
     const dispatch = useDispatch();
+
+    const { uid } = useSelector(state => state.firebase.auth);
 
     const handleOpen = movie => {
         if(props?.type === 'movie') {
@@ -33,11 +35,13 @@ const DetailCard = props => {
                     <StyledImage src={noImagePlaceholder} alt={props?.title} />
                 )}
             </StyledImageWrapper>
-            <AddIcon>
-                <IconContext.Provider value={{ color: '#fff', size: '22px' }}>
-                    <FiPlus />
-                </IconContext.Provider>
-            </AddIcon>
+            {uid && (
+                <AddIcon>
+                    <IconContext.Provider value={{ color: '#fff', size: '22px' }}>
+                        <FiPlus />
+                    </IconContext.Provider>
+                </AddIcon>
+            )}
             {props?.type === 'movie' && (
                 <StyledWatchTrailerBtn className="position-absolute" onClick={() => handleOpen(props)}>
                     <IconContext.Provider value={{ color: '#FCA311', size: '16px' }}>

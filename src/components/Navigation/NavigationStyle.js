@@ -9,6 +9,11 @@ export const StyledNavLink = styled(LinkContainer) `
     border-color: ${({ btn }) => btn && '#FCA311'};
     width: ${({ btn }) => btn && '70%'};
 
+    &:hover {
+        background-color: ${({ btn }) => btn && '#FCA311'};
+        border-color: ${({ btn }) => btn && '#FCA311'};
+    }
+
     ${sizes.tablet} {
         width: ${({ btn }) => btn && '35%'};
     }

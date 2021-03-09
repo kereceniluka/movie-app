@@ -55,6 +55,11 @@ export const AddIcon = styled.div `
     background: rgba(0, 0, 0, 0.6);
     border-radius: 4px;
     cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        background: rgba(0, 0, 0, 1);
+    }
 
     ${sizes.tablet} {
         top: 5%;
