@@ -1,5 +1,3 @@
-import React from 'react';
-
 // components
 import Banner from '../components/Banner';
 import Cta from '../components/Cta';

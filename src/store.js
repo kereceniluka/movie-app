@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 // reducers
 import { trailerModalReducer } from './reducers/trailerModal';
-import { popularMovieDetailsReducer, popularTVsDetailsReducer } from './reducers/details';
+import { popularMovieDetailsReducer, popularTVsDetailsReducer, movieGenresReducer, tvShowSeasonsReducer, detailsReducer } from './reducers/details';
 import { searchedMovieReducer, searchedTVShowReducer } from './reducers/search';
 import { authReducer } from './reducers/auth';
 import { firebaseReducer, getFirebase } from 'react-redux-firebase';
@@ -13,9 +13,12 @@ import { firestoreReducer } from 'redux-firestore';
 const rootReducer = combineReducers({
     trailerModal: trailerModalReducer,
     trendingMovies: popularMovieDetailsReducer,
+    allMovieGenres: movieGenresReducer,
+    allTVShowSeasons: tvShowSeasonsReducer,
     trendingTVs: popularTVsDetailsReducer,
     searchedMovies: searchedMovieReducer,
     searchedTVShows: searchedTVShowReducer,
+    details: detailsReducer,
     auth: authReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer,

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { StyledLargeTitle, StyledRow } from '../../theme/StyledElements';
 import { StyledSection } from './PosterSectionStyle';
 import { useDispatch, useSelector } from 'react-redux';
 
 // bootstrap
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 // components
 import DetailCard from '../DetailCard';
@@ -23,7 +23,7 @@ const PosterSection = ({ title, type, period, bg }) => {
 
     return (
         <StyledSection bg={bg}>
-            <Container style={{ padding: 0 }}>
+            <Container className="p-0">
                 <StyledLargeTitle>{title}</StyledLargeTitle>
                 <StyledRow lg={5} md={2} sm={1}>
                     {loading === false && (

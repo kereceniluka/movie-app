@@ -7,27 +7,33 @@ import {
     SEARCH_TV_FAIL,
 } from '../constants/search';
 
-export const searchedMovieReducer = (state = { loading: null, data: {}, error: null }, action) => {
+const initialState = {
+    loading: null,
+    data: {},
+    error: null,
+}
+
+export const searchedMovieReducer = (state = initialState, action) => {
     switch(action.type) {
         case SEARCH_MOVIE_REQUEST:
-            return { loading: true, data: {} };
+            return { ...state, loading: true };
         case SEARCH_MOVIE_SUCCESS:
-            return { loading: false, data: action.payload };
+            return { ...state, loading: false, data: action.payload };
         case SEARCH_MOVIE_FAIL:
-            return { loading: false, error: action.payload };
+            return { ...state, loading: false, error: action.payload };
         default:
             return state;
     }
 }
 
-export const searchedTVShowReducer = (state = { loading: null, data: {}, error: null }, action) => {
+export const searchedTVShowReducer = (state = initialState, action) => {
     switch(action.type) {
         case SEARCH_TV_REQUEST:
-            return { loading: true, data: {} };
+            return { ...state, loading: true };
         case SEARCH_TV_SUCCESS:
-            return { loading: false, data: action.payload };
+            return { ...state, loading: false, data: action.payload };
         case SEARCH_TV_FAIL:
-            return { loading: false, error: action.payload };
+            return { ...state, loading: false, error: action.payload };
         default:
             return state;
     }

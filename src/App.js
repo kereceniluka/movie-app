@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import YouTube from 'react-youtube';
@@ -17,6 +16,7 @@ import Signup from './components/Forms/Signup';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import TVShows from './pages/TVShows';
+import Details from './pages/Details';
 
 const App = () => {
 
@@ -36,10 +36,11 @@ const App = () => {
         {trailer && <YouTube videoId={trailer} opts={opts} />}
       </Modal>
       <Navigation />
-      <main className="d-flex flex-column align-items-center justify-content-center">
+      <main>
         <Route exact path="/" component={Home} />
         <Route path="/movies" component={Movies} />
         <Route path="/tvshows" component={TVShows} />
+        <Route path="/details" component={Details} />
         <Container style={{ maxWidth: '500px' }}>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />

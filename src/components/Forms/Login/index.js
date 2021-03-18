@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledSubmitBtn, StyledNavLink } from '../FormsStyle';
 import { useHistory, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';

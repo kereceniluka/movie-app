@@ -1,9 +1,7 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledModal } from './ModalStyle';
 
 // bootstrap
-import { Modal as ModalB } from 'react-bootstrap';
+import { Modal as StyledModal } from 'react-bootstrap';
 
 // actions
 import { closeModal } from '../../actions/trailerModal';
@@ -19,12 +17,12 @@ const Modal = ({ children }) => {
 
     return (
         <StyledModal show={showModal} onHide={handleClose} size="xl" centered>
-            <ModalB.Header closeButton>
-                <ModalB.Title>{title}</ModalB.Title>
-            </ModalB.Header>
-            <ModalB.Body>
+            <StyledModal.Header closeButton>
+                <StyledModal.Title>{title}</StyledModal.Title>
+            </StyledModal.Header>
+            <StyledModal.Body>
                 {children}
-            </ModalB.Body>
+            </StyledModal.Body>
         </StyledModal>
     );
 }

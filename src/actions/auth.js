@@ -8,16 +8,16 @@ import {
     USER_SIGNUP_FAIL, 
 } from '../constants/auth';
 import { getFirebase } from 'react-redux-firebase';
+import { getFirestore } from 'redux-firestore';
 
 export const login = (email, password) => async (dispatch) => {
     try {
         const firebase = getFirebase();
+
         const data = await firebase.auth().signInWithEmailAndPassword(email, password);
-        console.log(data);
         dispatch({ type: USER_LOGIN_SUCCESS });
 
     } catch (error) {
-        console.log(error);
         dispatch({ type: USER_LOGIN_FAIL, payload: error });
     }
 }
@@ -25,6 +25,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         const firebase = getFirebase();
+
         await firebase.auth().signOut();
         dispatch({ type: USER_LOGOUT_SUCCESS });
 
@@ -36,8 +37,16 @@ export const logout = () => async (dispatch) => {
 export const signup = (email, password) => async (dispatch) => {
     try {
         const firebase = getFirebase();
-        const data = await firebase.auth().createUserWithEmailAndPassword(email, password);
-        console.log(data);
+        const firestore = getFirestore();
+
+        const { user: { uid } } = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        await firestore.collection('users').doc(uid).set({ 
+            watchlist: {
+                movies: [],
+                tvShows: [],
+            }, 
+        });
+
         dispatch({ type: USER_SIGNUP_SUCCESS });
 
     } catch (error) {

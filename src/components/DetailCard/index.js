@@ -1,63 +1,53 @@
-import React from 'react';
-import { StyledCol, StyledImageWrapper, StyledOverlay, StyledImage, StyledWatchTrailerBtn, StyledWatchTrailerBtnLabel, StyledDescriptionWrapper, StyledVoteLabel, StyledDetailCardTitle } from './DetailCardStyle';
-import { AddIcon } from '../../theme/StyledElements';
-import { useDispatch, useSelector } from 'react-redux';
+import { 
+    StyledCol, 
+    StyledImageWrapper, 
+    StyledOverlay, 
+    StyledImage, 
+    StyledDescriptionWrapper, 
+    StyledVoteLabel, 
+    StyledDetailCardTitle,
+} from './DetailCardStyle';
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { IconContext } from 'react-icons';
-import { FaPlay, FaStar } from 'react-icons/fa';
-import { FiPlus } from 'react-icons/fi';
+import { FaStar } from 'react-icons/fa';
 
 // assets
 import noImagePlaceholder from '../../assets/images/no-image-placeholder.svg';
 
-// actions
-import { playTrailer } from '../../actions/trailerModal';
-
+// components
+import WatchlistBtn from '../shared/buttons/WatchlistBtn';
+import WatchTrailerBtn from '../shared/buttons/WatchTrailerBtn';
 
 const DetailCard = props => {
 
-    const dispatch = useDispatch();
+    const history = useHistory();
 
     const { uid } = useSelector(state => state.firebase.auth);
 
-    const handleOpen = movie => {
-        if(props?.type === 'movie') {
-            dispatch(playTrailer(movie));
-        }
+    const handleOpenDetails = (id, type) => {
+        history.push({
+            pathname: '/details',
+            state: { id, type },
+        });
     }
 
     return (
         <StyledCol className="d-flex flex-column align-items-center overflow-hidden" sm={12} md={4}>
             <StyledImageWrapper className="d-flex align-items-center overflow-hidden">
-                <StyledOverlay className="position-absolute overflow-hidden" onClick={() => handleOpen(props)} />
-                {props?.poster_path ? (
-                    <StyledImage src={`${process.env.REACT_APP_TMDB_IMAGES_URL}${props?.poster_path}`} alt={props?.title} />
-                ) : (
-                    <StyledImage src={noImagePlaceholder} alt={props?.title} />
-                )}
+                <StyledOverlay className="position-absolute overflow-hidden" />
+                <StyledImage src={props?.poster_path ? `${process.env.REACT_APP_TMDB_IMAGES_URL}${props?.poster_path}` : noImagePlaceholder} alt={props?.title} />
             </StyledImageWrapper>
-            {uid && (
-                <AddIcon>
-                    <IconContext.Provider value={{ color: '#fff', size: '22px' }}>
-                        <FiPlus />
-                    </IconContext.Provider>
-                </AddIcon>
-            )}
-            {props?.type === 'movie' && (
-                <StyledWatchTrailerBtn className="position-absolute" onClick={() => handleOpen(props)}>
-                    <IconContext.Provider value={{ color: '#FCA311', size: '16px' }}>
-                        <FaPlay />
-                    </IconContext.Provider>
-                    <StyledWatchTrailerBtnLabel>Watch trailer</StyledWatchTrailerBtnLabel>
-                </StyledWatchTrailerBtn>
-            )}
+            {uid && <WatchlistBtn type={props?.media_type} {...props} />}
+            {props?.type === 'movie' && <WatchTrailerBtn {...props} />}
             <StyledDescriptionWrapper className="w-100 d-flex flex-column">
-                <span className="d-flex align-items-center" style={{ marginBottom: '12px' }}>
-                    <IconContext.Provider value={{ color: '#f7d633', size: '24px' }}>
+                <span className="d-flex align-items-center mb-2">
+                    <IconContext.Provider value={{ color: '#fca311', size: '24px' }}>
                         <FaStar />
                     </IconContext.Provider>
                     <StyledVoteLabel>{props?.vote_average}</StyledVoteLabel>
                 </span>
-                <StyledDetailCardTitle>{props?.title || props?.name}</StyledDetailCardTitle>
+                <StyledDetailCardTitle onClick={() => handleOpenDetails(props?.id, props?.media_type)}>{props?.title || props?.name}</StyledDetailCardTitle>
             </StyledDescriptionWrapper>
         </StyledCol>
     );

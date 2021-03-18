@@ -1,7 +1,9 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ScrollToTop from 'react-router-scroll-top'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import GlobalStyle from './theme/globalStyle';
 import App from './App';
 
@@ -27,10 +29,12 @@ const rrfProps = {
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <GlobalStyle />
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
-      </ReactReduxFirebaseProvider>
+      <ScrollToTop>
+        <GlobalStyle />
+        <ReactReduxFirebaseProvider {...rrfProps}>
+          <App />
+        </ReactReduxFirebaseProvider>
+      </ScrollToTop>
     </Router>
   </Provider>,
   document.getElementById('root')
