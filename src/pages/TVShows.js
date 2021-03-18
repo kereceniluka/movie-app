@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 
 // bootstrap
@@ -13,16 +12,16 @@ const TVShows = () => {
     const { loading, data: { results } } = useSelector(state => state.searchedTVShows);
 
     return (
-        <Container style={{ padding: 0 }}>
-            <Row style={{ margin: 0 }}>
+        <Container className="p-0">
+            <Row className="m-0">
                 <SearchInput placeholder="Search TV Show" />
             </Row>
-            <Row className="d-flex align-items-center justify-content-center" lg={5} style={{ margin: 0 }}>
+            <Row className="my-4 mx-0" lg={5}>
                 {loading === false && (
                     results.length === 0 ? (        
                         <Alert className="m-auto" variant="danger">Sorry, but we can't find any TV Show.</Alert>
                     ) : (
-                        results.map(movies => <DetailCard key={movies.id} {...movies} />)
+                        results.map(tvShow => <DetailCard key={tvShow?.id} media_type="tv" {...tvShow} />)
                     )
                 )}
             </Row>
