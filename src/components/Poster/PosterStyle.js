@@ -1,23 +1,21 @@
 import styled from 'styled-components/macro';
 import sizes from '../../utils/responsive';
-import { Card } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 
 export const StyledCard = styled(Card) `
-    border: none;
+    border: 0;
     width: 225px;
     max-height: 300px;
     color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    cursor: pointer;
 `;
 
-export const StyledTitle = styled(Card.Title) `
-    font-size: .8rem;
-    font-weight: bold;
-    text-align: center;
-    opacity: 0;
-    transition: all .3s ease-in-out;
+export const StyledImage = styled(Image) `
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
 `;
 
 export const StyledImgOverlay = styled(Card.ImgOverlay) `

@@ -1,7 +1,11 @@
-import React from 'react';
+import { 
+    StyledNavbar,
+    StyledAvatar,
+    StyledNavLink, 
+    StyledNavDropdown,
+} from './NavigationStyle';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledNavLink } from './NavigationStyle';
 import { LinkContainer } from 'react-router-bootstrap';
 import logo from '../../assets/images/logo.svg';
 import avatar from '../../assets/images/avatar.jpg';
@@ -28,7 +32,7 @@ const Navigation = () => {
     }
 
     return (
-        <Navbar bg="white" variant="light" expand="lg" sticky="top" style={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.15)' }}>
+        <StyledNavbar bg="white" variant="light" expand="lg" sticky="top">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand><Image src={logo} /></Navbar.Brand>
@@ -46,8 +50,8 @@ const Navigation = () => {
                     <Nav className="d-sm-flex align-items-center">
                         {uid ? (
                             <>
-                                <Image src={avatar} roundedCircle style={{ width: '40px' }} />
-                                <NavDropdown title={email.substring(0, email.indexOf('@'))} id="basic-nav-dropdown" style={{ fontWeight: 700, color: '#14213D' }}>
+                                <StyledAvatar src={avatar} roundedCircle />
+                                <StyledNavDropdown title={email.substring(0, email.indexOf('@'))} id="basic-nav-dropdown">
                                     <StyledNavLink to="/watchlist">
                                         <NavDropdown.Item>Watchlist</NavDropdown.Item>
                                     </StyledNavLink>
@@ -56,14 +60,14 @@ const Navigation = () => {
                                     </StyledNavLink>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-                                </NavDropdown>
+                                </StyledNavDropdown>
                             </>
                         ) : (
                             <>
-                                <StyledNavLink to="/login" marginRight>
+                                <StyledNavLink to="/login" margin="true">
                                     <Nav.Link>Log In</Nav.Link>
                                 </StyledNavLink>
-                                <StyledNavLink to="/signup" activeStyle={{ backgroundColor: '#FCA311', borderColor: '#FCA311' }} btn>
+                                <StyledNavLink to="/signup" activeStyle={{ backgroundColor: '#FCA311', borderColor: '#FCA311' }} btn="true">
                                     <Button>Sign Up</Button>
                                 </StyledNavLink>
                             </> 
@@ -71,7 +75,7 @@ const Navigation = () => {
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </StyledNavbar>
     );
 }
 

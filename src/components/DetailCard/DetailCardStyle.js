@@ -30,20 +30,6 @@ export const StyledImage = styled(Image) `
     object-fit: cover;
     object-position: center;
 `;
- 
-export const StyledWatchTrailerBtn = styled.span `
-    left: 36%;
-    bottom: 36%;
-    transform: translateX(-26%);
-    cursor: pointer;
-`;
-
-export const StyledWatchTrailerBtnLabel = styled.span `
-    font-weight: bold;
-    line-height: 28px;
-    padding-left: 10px;
-    color: #fff;
-`;
 
 export const StyledDescriptionWrapper = styled.div `
     padding: 0;
@@ -73,4 +59,10 @@ export const StyledDetailCardTitle = styled.span `
     letter-spacing: -0.3px;
     color: #001217;
     padding: 0;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: #FCA311;
+        cursor: pointer;
+    }
 `;

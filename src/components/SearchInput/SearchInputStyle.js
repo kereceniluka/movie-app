@@ -1,6 +1,10 @@
 import styled from 'styled-components/macro';
 import sizes from '../../utils/responsive';
-import { Form, Button } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
+
+export const StyledContainer = styled(Container) `
+    padding: 60px 0 100px 0;
+`;
 
 export const StyledSearchInputParagraph = styled.p `
     max-width: 100vw;
