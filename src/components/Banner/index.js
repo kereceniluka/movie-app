@@ -55,7 +55,7 @@ const Banner = () => {
                                             <StyledLabel>{movie?.release_date.substring(0, 4)}</StyledLabel>
                                             <StyledMovieTitle>{movie?.title}</StyledMovieTitle>
                                             <StyledLabel>{movie?.genres && showMovieGenres(movie?.genre_ids)}</StyledLabel>
-                                            <StyledMovieOverview>{movie?.Coloverview}</StyledMovieOverview>
+                                            <StyledMovieOverview>{movie?.overview}</StyledMovieOverview>
                                             <IconContext.Provider value={{ color: '#FCA311', size: '24px' }}>
                                                 <div className="d-flex align-items-center">
                                                     <FaStar />
