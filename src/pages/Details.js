@@ -79,8 +79,12 @@ const Details = () => {
                             <Slider {...settings}>
                                 {credits && credits.cast.map(cast => <CastCard key={cast?.credit_id} {...cast} />)}
                             </Slider>
-                            <StyledLargeTitle className="mt-5" style={{ marginLeft: '10px' }}>All Seasons</StyledLargeTitle>
-                            <Seasons id={details?.id} numberOfSeasons={details?.number_of_seasons} />
+                            {type === 'tv' && (
+                                <>
+                                    <StyledLargeTitle className="mt-5" style={{ marginLeft: '10px' }}>All Seasons</StyledLargeTitle>
+                                    <Seasons id={details?.id} numberOfSeasons={details?.number_of_seasons} />
+                                </>
+                            )}
                         </Container>
                     </Row>
                 </>
