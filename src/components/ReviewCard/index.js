@@ -8,20 +8,20 @@ import { FaUserCircle } from 'react-icons/fa';
 // bootstrap
 import { Card, Button } from 'react-bootstrap';
 
-const ReviewCard = ({ author, id, author_details, content, created_at, maxCharacters = 400 }) => {
+const ReviewCard = ({ author, author_details, content, created_at, maxCharacters = 300 }) => {
 
     const [isTruncated, setIsTruncated] = useState(true);
 
-    const truncatedContent = isTruncated ? content.slice(0, maxCharacters).concat('...') : content;
+    const truncatedContent = isTruncated && content.length > maxCharacters ? content.slice(0, maxCharacters).concat('...') : content;
 
     const handleIsTruncated = () => {
         setIsTruncated(!isTruncated);
     }
 
     return (
-        <Card className="my-3">
+        <Card className="w-100 my-3">
             <Card.Body className="w-100 d-flex flex-column align-items-start justify-content-start">
-                <div className="w-100 d-flex align-items-center justify-content-start">
+                <div className="d-flex align-items-center justify-content-start">
                     <IconContext.Provider value={{ size: '56px', color: '#b2b2b2' }}>
                         {author_details?.avatar_path !== null ? (
                             author_details?.avatar_path.startsWith('/https') ? <StyledAvatar src={author_details?.avatar_path.substring(1)} roundedCircle /> : <StyledAvatar src={`${process.env.REACT_APP_TMDB_IMAGES_URL}${author_details?.avatar_path}`} roundedCircle />

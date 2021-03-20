@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 // components
 import WatchlistBtn from '../shared/buttons/WatchlistBtn';
+import WatchTrailerBtn from '../shared/buttons/WatchTrailerBtn';
 
 const Poster = props => {
 
@@ -18,6 +19,7 @@ const Poster = props => {
             <StyledImgOverlay className="d-flex flex-column align-items-center justify-content-end">
                 {uid && <WatchlistBtn poster="true" {...props} />}
             </StyledImgOverlay>
+            {props?.type === 'movie' && <WatchTrailerBtn isOnPoster="true" {...props} />}
         </StyledCard>
     );
 }

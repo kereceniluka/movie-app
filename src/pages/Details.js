@@ -61,9 +61,6 @@ const Details = () => {
                             <Row style={{ height: '400px', marginBottom: '65px' }}>
                                 <Col className="d-flex flex-column align-items-center justify-content-center" lg={3}>
                                     <Poster type={type} {...details} />
-                                    <IconContext.Provider value={{ color: '#FCA311', size: '16px' }}>
-                                        <span style={{ cursor: 'pointer' }} className="d-flex align-items-center justify-content-center py-2"><FaPlay /><span style={{ fontWeight: 'bold', color: '#fff', lineHeight: '28px', paddingLeft: '10px' }}>Watch trailer</span></span>
-                                    </IconContext.Provider>
                                 </Col>
                                 <Col className="d-flex flex-column align-items-start justify-content-center" lg={9}>
                                     <span style={{ fontSize: '20px', lineHeight: '28px', color: '#fff' }} >{details?.release_date ? details?.release_date.substring(0, 4) : details?.first_air_date.substring(0, 4)}</span>
@@ -92,13 +89,17 @@ const Details = () => {
                                     <Seasons id={details?.id} numberOfSeasons={details?.number_of_seasons} />
                                 </>
                             )}
-                            <StyledLargeTitle className="mt-5" style={{ marginLeft: '10px' }}>Reviews</StyledLargeTitle>
-                            <Row>
-                                <Col className="d-flex flex-column align-items-center">
-                                    {reviews ? reviews.slice(0, visibleReviews).map((review, index) => <ReviewCard key={index} {...review} />) : <span>There are no reviews...</span>}      
-                                    {visibleReviews <= reviews.length && <Button style={{ backgroundColor: '#FCA311', borderColor: '#FCA311' }} size="md" onClick={handleLoadMore}>Load More</Button>}
-                                </Col>
-                            </Row>
+                            {reviews.length !== 0 && (
+                                <>
+                                    <StyledLargeTitle className="mt-5" style={{ marginLeft: '10px' }}>Reviews</StyledLargeTitle>
+                                    <Row>
+                                        <Col className="d-flex flex-column align-items-center">
+                                            {reviews ? reviews.slice(0, visibleReviews).map(review => <ReviewCard key={review?.id} {...review} />) : <span>There are no reviews...</span>}      
+                                            {visibleReviews < reviews.length && <Button style={{ backgroundColor: '#FCA311', borderColor: '#FCA311' }} size="md" onClick={handleLoadMore}>Load More</Button>}
+                                        </Col>
+                                    </Row>
+                                </>
+                            )}
                         </Container>
                     </Row>
                 </>

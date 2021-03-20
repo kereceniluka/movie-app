@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const StyledWatchTrailerBtnWrapper = styled.span `
     left: 36%;
-    bottom: 36%;
+    bottom: ${({ isOnPoster }) => isOnPoster ? '5%' : '36%'};
     transform: translateX(-26%);
     cursor: pointer;
 `;
