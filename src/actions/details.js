@@ -81,14 +81,16 @@ export const fetchDetails = (id, type) => async (dispatch) => {
         if(type === 'movie') {
             const { data: details } = await api.get(`/movie/${id}`);
             const { data: credits } = await api.get(`/movie/${id}/credits`);
+            const { data: { results: reviews } } = await api.get(`/movie/${id}/reviews`);
 
-            dispatch({ type: DETAILS_SUCCESS, payload: { details, credits } });
+            dispatch({ type: DETAILS_SUCCESS, payload: { details, credits, reviews } });
 
         } else {
             const { data: details } = await api.get(`/tv/${id}`);
             const { data: credits } = await api.get(`/tv/${id}/credits`);
+            const { data: { results: reviews } } = await api.get(`/tv/${id}/reviews`);
 
-            dispatch({ type: DETAILS_SUCCESS, payload: { details, credits } });
+            dispatch({ type: DETAILS_SUCCESS, payload: { details, credits, reviews } });
         }
     
     } catch (error) {

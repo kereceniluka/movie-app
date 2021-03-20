@@ -20,7 +20,6 @@ export const StyledOverlay = styled.div `
     background: linear-gradient(0, #000000 0%, rgba(30, 29, 29, 0) 100%);
     opacity: 0.7;
     border-radius: 8px;
-    cursor: pointer;
 `;
 
 export const StyledImage = styled(Image) `

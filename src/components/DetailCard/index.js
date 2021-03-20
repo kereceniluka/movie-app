@@ -39,7 +39,7 @@ const DetailCard = props => {
                 <StyledImage src={props?.poster_path ? `${process.env.REACT_APP_TMDB_IMAGES_URL}${props?.poster_path}` : noImagePlaceholder} alt={props?.title} />
             </StyledImageWrapper>
             {uid && <WatchlistBtn type={props?.media_type} {...props} />}
-            {props?.type === 'movie' && <WatchTrailerBtn {...props} />}
+            {props?.media_type === 'movie' && <WatchTrailerBtn {...props} />}
             <StyledDescriptionWrapper className="w-100 d-flex flex-column">
                 <span className="d-flex align-items-center mb-2">
                     <IconContext.Provider value={{ color: '#fca311', size: '24px' }}>

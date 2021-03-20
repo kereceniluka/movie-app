@@ -11,13 +11,13 @@ const WatchTrailerBtn = props => {
     const dispatch = useDispatch();
 
     const handleOpen = movie => {
-        if(props?.type === 'movie') {
+        if(props?.media_type === 'movie' || props?.type === 'movie') {
             dispatch(playTrailer(movie));
         }
     }
 
     return (
-        <StyledWatchTrailerBtnWrapper className="position-absolute" onClick={() => handleOpen(props)}>
+        <StyledWatchTrailerBtnWrapper className="position-absolute" onClick={() => handleOpen(props)} isOnPoster={props?.isOnPoster}>
             <IconContext.Provider value={{ color: '#FCA311', size: '16px' }}>
                 <FaPlay />
             </IconContext.Provider>

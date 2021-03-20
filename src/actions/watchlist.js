@@ -25,7 +25,7 @@ export const addToWatchlist = data => async (dispatch, getState) => {
 
             dispatch({ type: WATCHLIST_ADD_SUCCESS });
 
-        } else if(data.type === 'tv' && !dataExists) {
+        } else if(!dataExists) {
             await firestore.collection('users').doc(uid).set({ 
                 watchlist: {
                     ...prevWatchlistState,
