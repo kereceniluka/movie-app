@@ -13,7 +13,7 @@ const initialState = {
     error: null,
 }
 
-export const searchedMovieReducer = (state = initialState, action) => {
+export const searchedDataReducer = (state = initialState, action) => {
     switch(action.type) {
         case SEARCH_MOVIE_REQUEST:
             return { ...state, loading: true };
@@ -21,13 +21,6 @@ export const searchedMovieReducer = (state = initialState, action) => {
             return { ...state, loading: false, data: action.payload };
         case SEARCH_MOVIE_FAIL:
             return { ...state, loading: false, error: action.payload };
-        default:
-            return state;
-    }
-}
-
-export const searchedTVShowReducer = (state = initialState, action) => {
-    switch(action.type) {
         case SEARCH_TV_REQUEST:
             return { ...state, loading: true };
         case SEARCH_TV_SUCCESS:

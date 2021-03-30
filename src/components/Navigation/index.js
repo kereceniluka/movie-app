@@ -40,11 +40,8 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto d-sm-flex align-items-center">
-                        <StyledNavLink to="/movies">
-                            <Nav.Link>Movies</Nav.Link>
-                        </StyledNavLink>
-                        <StyledNavLink to="/tvshows">
-                            <Nav.Link>TV Shows</Nav.Link>
+                        <StyledNavLink to="/discover">
+                            <Nav.Link>Discover</Nav.Link>
                         </StyledNavLink>
                     </Nav>
                     <Nav className="d-sm-flex align-items-center">
