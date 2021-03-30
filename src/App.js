@@ -14,8 +14,7 @@ import Signup from './components/Forms/Signup';
 
 // pages
 import Home from './pages/Home';
-import Movies from './pages/Movies';
-import TVShows from './pages/TVShows';
+import Search from './pages/Search';
 import Details from './pages/Details';
 
 const App = () => {
@@ -38,8 +37,7 @@ const App = () => {
       <Navigation />
       <main>
         <Route exact path="/" component={Home} />
-        <Route path="/movies" component={Movies} />
-        <Route path="/tvshows" component={TVShows} />
+        <Route path="/discover" component={Search} />
         <Route path="/details" component={Details} />
         <Container style={{ maxWidth: '500px' }}>
           <Route path="/login" component={Login} />
